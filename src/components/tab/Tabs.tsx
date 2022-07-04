@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../../src/screens/home";
-import Profile from "../../src/screens/profile";
-import Search from "../../src/screens/search";
+
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Entypo } from "@expo/vector-icons";
+import Home from "../../screens/home";
+import Search from "../../screens/search";
+import Profile from "../../screens/profile";
 
 const Tab = createBottomTabNavigator();
 

@@ -8,7 +8,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "./src/screens/home";
 import Search from "./src/screens/search";
 import Profile from "./src/screens/profile/index";
-import { Tabs } from "./components/tab/Tabs";
+import { Tabs } from "./src/components/tab/Tabs";
+import Category from "./src/screens/category";
+
 // Define the config
 const config = {
 	useSystemColorMode: false,
@@ -33,6 +35,11 @@ export default function App() {
 						name="Tabs"
 						component={Tabs}
 						options={{ headerShown: false }}
+					/>
+					<Stack.Screen
+						name="Category"
+						component={Category}
+						options={{ title: "Categories" }}
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
