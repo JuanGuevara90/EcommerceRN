@@ -5,8 +5,8 @@ export const styles = StyleSheet.create({
 		flex: 1,
 	},
 	textInput: {
-		textAlign: "right",
 		marginTop: 10,
+		paddingHorizontal: 8,
 		paddingVertical: 10,
 		marginHorizontal: 5,
 		borderWidth: 0.5,

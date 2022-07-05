@@ -10,6 +10,7 @@ import Search from "./src/screens/search";
 import Profile from "./src/screens/profile/index";
 import { Tabs } from "./src/components/tab/Tabs";
 import Category from "./src/screens/category";
+import { SafeAreaView } from "react-native";
 
 // Define the config
 const config = {

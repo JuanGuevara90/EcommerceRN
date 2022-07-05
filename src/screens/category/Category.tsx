@@ -1,36 +1,23 @@
-import { Button } from "native-base";
 import React, { useEffect, useState } from "react";
-import {
-	View,
-	Text,
-	SafeAreaView,
-	FlatList,
-	TouchableOpacity,
-	TextInput,
-	Image,
-} from "react-native";
-import { getCategories } from "../../api/getCategories";
-import { getProductsByCategory } from "../../api/getProducts";
-import { styles } from "./Category.style";
-import { Entypo } from "@expo/vector-icons";
-import Automitive from "../../assets/svg/automotive.svg";
-import { SvgUri } from "react-native-svg";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { SVGIcon } from "../../components/icon";
+import { getCategories } from "../../api/getCategories";
 import { searchCategories } from "../../utilis/searchCategories";
-import { replaceCharacter } from "../../utilis/replaceCharacter";
+import { styles } from "./Category.style";
+
+import { alphabeticalOrder, formatText } from "./utils/strings";
+import { Input } from "native-base";
 
 const Category = () => {
 	const [text, setText] = useState("");
-	const [categories, setCategories] = useState([]);
+	const [categories, setCategories] = useState<Array<String>>([]);
 
 	useEffect(() => {
-		let isSubscribed = true;
 		getCategories()
 			.then((response) => {
-				setCategories(response.data);
+				setCategories(alphabeticalOrder(response.data));
 			})
 			.catch((error) => {});
-		return () => (isSubscribed = false);
 	}, []);
 
 	const GridView = ({ data }) => {
@@ -42,9 +29,7 @@ const Category = () => {
 				}}
 			>
 				{SVGIcon[String(data)]}
-				<Text style={styles.label}>
-					{replaceCharacter(data, "-", " ").toUpperCase()}
-				</Text>
+				<Text style={styles.label}>{formatText(data)}</Text>
 			</TouchableOpacity>
 		);
 	};
@@ -52,25 +37,24 @@ const Category = () => {
 	const getOnPressItem = (data: string) => {
 		console.log(data);
 	};
-	console.log(categories);
-	return (
-		<SafeAreaView style={styles.container}>
-			<TextInput style={styles.textInput} value={text} onChangeText={setText} />
 
-			<View
-				style={{
-					flex: 2,
-				}}
-			>
-				<FlatList
-					data={searchCategories(text, categories)}
-					renderItem={({ item }) => <GridView data={item} />}
-					numColumns={3}
-					keyExtractor={(item) => item}
-					ListEmptyComponent={() => <Text> No found data.</Text>}
-				/>
-			</View>
-		</SafeAreaView>
+	return (
+		<View style={styles.container}>
+			<Input
+				style={styles.textInput}
+				value={text}
+				onChangeText={setText}
+				placeholder="Write category name here..."
+			/>
+
+			<FlatList
+				data={searchCategories(text, categories)}
+				renderItem={({ item }) => <GridView data={item} />}
+				numColumns={3}
+				keyExtractor={(item) => item}
+				ListEmptyComponent={() => <Text> No found data.</Text>}
+			/>
+		</View>
 	);
 };
 
