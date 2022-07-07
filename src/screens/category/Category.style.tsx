@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: "#187a38",
 	},
 	gridbox: {
-		flex: 1,
+		flex: 1 / 3,
 		height: 200,
 		marginHorizontal: 2,
 		marginTop: 10,

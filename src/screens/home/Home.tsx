@@ -1,5 +1,6 @@
-import { View, ScrollView, TouchableWithoutFeedback } from "react-native";
 import React, { useEffect, useState } from "react";
+import { View, ScrollView, TouchableWithoutFeedback } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/stack";
 import {
 	Center,
 	Container,
@@ -18,8 +19,17 @@ import { getCategories } from "../../api/getCategories";
 import { styles } from "./Home.style";
 import Title from "../../components/commons/title";
 import Card from "../../components/card";
+import { RootStackParamList } from "../../utilis/rootStackParamList";
 
-const Home = ({ navigation }) => {
+type Props = NativeStackScreenProps<
+	RootStackParamList,
+	"Home",
+	"Category",
+	"Product",
+	"Search"
+>;
+
+const Home = ({ navigation }: Props) => {
 	const [categories, setCategories] = useState([]);
 	const [products, setProduts] = useState([]);
 
@@ -29,7 +39,6 @@ const Home = ({ navigation }) => {
 				setCategories(response.data.slice(0, 3));
 			})
 			.catch();
-		/* getProducts(); */
 	}, []);
 	return (
 		<ScrollView style={styles.main_container}>
@@ -44,7 +53,6 @@ const Home = ({ navigation }) => {
 				<Container mt="3">
 					<Title title="Categories" />
 				</Container>
-
 				<Container my="5">
 					<Flex mx="3" direction="row" justify="space-between" h="60">
 						{categories.map((category) => (
@@ -63,7 +71,7 @@ const Home = ({ navigation }) => {
 						<Center mx="0.5" my="5" key={`category_more`}>
 							<TouchableWithoutFeedback
 								onPress={() => {
-									navigation.navigate('Category');
+									navigation.navigate("Category");
 								}}
 							>
 								<View>

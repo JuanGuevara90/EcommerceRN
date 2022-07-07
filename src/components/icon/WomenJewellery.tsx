@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { SvgProps, Path } from "react-native-svg";
 
-const WomenJewellery = (props) => (
+const SvgComponent = (props: SvgProps) => (
 	<Svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 512.002 512.002"
@@ -34,4 +34,4 @@ const WomenJewellery = (props) => (
 	</Svg>
 );
 
-export default WomenJewellery;
+export default SvgComponent;

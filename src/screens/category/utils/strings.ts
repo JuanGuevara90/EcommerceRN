@@ -1,6 +1,6 @@
-export const replaceCharacter = (stringCurrent,valueCurrent,valueReplace) => stringCurrent.replace(valueCurrent,valueReplace);
+export const replaceCharacter = (stringCurrent : string,valueCurrent:string,valueReplace:string) => stringCurrent.replace(valueCurrent,valueReplace);
 
-export const formatText = (stringCurrent) => {
+export const formatText = (stringCurrent: string) => {
 
     let words = stringCurrent.split("-");
 
@@ -11,7 +11,7 @@ export const formatText = (stringCurrent) => {
 }
 
 
-export const alphabeticalOrder = (data : Array<String>) => {
+export const alphabeticalOrder = (data : Array<string>) => {
 
     return data.sort((a,b)=>a.localeCompare(b));
 

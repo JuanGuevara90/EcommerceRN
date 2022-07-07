@@ -1,7 +1,14 @@
 import * as React from "react";
-import Svg, { Circle, Path, RadialGradient, Stop, G } from "react-native-svg";
+import Svg, {
+	SvgProps,
+	Circle,
+	Path,
+	RadialGradient,
+	Stop,
+	G,
+} from "react-native-svg";
 
-const WomenBag = (props) => (
+const SvgComponent = (props: SvgProps) => (
 	<Svg
 		width={128}
 		height={128}
@@ -57,4 +64,4 @@ const WomenBag = (props) => (
 	</Svg>
 );
 
-export default WomenBag;
+export default SvgComponent;

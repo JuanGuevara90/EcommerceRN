@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { Input } from "native-base";
+import { NativeStackScreenProps } from "@react-navigation/stack";
 import { SVGIcon } from "../../components/icon";
 import { getCategories } from "../../api/getCategories";
 import { searchCategories } from "../../utilis/searchCategories";
 import { styles } from "./Category.style";
 
 import { alphabeticalOrder, formatText } from "./utils/strings";
-import { Input } from "native-base";
 
-const Category = () => {
+import { RootStackParamList } from "../../utilis/rootStackParamList";
+
+type Props = NativeStackScreenProps<
+	RootStackParamList,
+	"Home",
+	"Category",
+	"Product",
+	"Search"
+>;
+
+const Category = ({ navigation }: Props) => {
 	const [text, setText] = useState("");
-	const [categories, setCategories] = useState<Array<String>>([]);
+	const [categories, setCategories] = useState<string[]>([]);
 
 	useEffect(() => {
 		getCategories()
@@ -29,13 +40,18 @@ const Category = () => {
 				}}
 			>
 				{SVGIcon[String(data)]}
+
 				<Text style={styles.label}>{formatText(data)}</Text>
 			</TouchableOpacity>
 		);
 	};
 
-	const getOnPressItem = (data: string) => {
-		console.log(data);
+	const getOnPressItem = (category: string) => {
+		console.log(category);
+		navigation.navigate("Product", {
+			category,
+			name: formatText(category),
+		});
 	};
 
 	return (

@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Path, G } from "react-native-svg";
+import Svg, { SvgProps, Path, G } from "react-native-svg";
 
-const WhomenShoes = (props) => (
+const SvgComponent = (props: SvgProps) => (
 	<Svg
 		width={256}
 		height={256}
@@ -85,4 +85,4 @@ const WhomenShoes = (props) => (
 	</Svg>
 );
 
-export default WhomenShoes;
+export default SvgComponent;

@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Rect, Path } from "react-native-svg";
+import Svg, { SvgProps, Rect, Path } from "react-native-svg";
 
-const Fragrance = (props) => (
+const SvgComponent = (props: SvgProps) => (
 	<Svg
 		width={48}
 		height={48}
@@ -54,4 +54,4 @@ const Fragrance = (props) => (
 	</Svg>
 );
 
-export default Fragrance;
+export default SvgComponent;

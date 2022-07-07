@@ -1,4 +1,4 @@
-export const searchCategories = (text, categories) => {
+export const searchCategories = (text:string, categories: string[]) => {
 	if (text === "") {
 		return categories;
 	}

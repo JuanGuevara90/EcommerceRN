@@ -1,7 +1,7 @@
 import * as React from "react";
-import Svg, { Path, Circle } from "react-native-svg";
+import Svg, { SvgProps, Path, Circle } from "react-native-svg";
 
-const Motorcycle = (props) => (
+const SvgComponent = (props: SvgProps) => (
 	<Svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 496 496"
@@ -382,4 +382,4 @@ const Motorcycle = (props) => (
 	</Svg>
 );
 
-export default Motorcycle;
+export default SvgComponent;

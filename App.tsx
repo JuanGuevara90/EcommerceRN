@@ -11,6 +11,7 @@ import Profile from "./src/screens/profile/index";
 import { Tabs } from "./src/components/tab/Tabs";
 import Category from "./src/screens/category";
 import { SafeAreaView } from "react-native";
+import Product from "./src/screens/product";
 
 // Define the config
 const config = {
@@ -41,6 +42,11 @@ export default function App() {
 						name="Category"
 						component={Category}
 						options={{ title: "Categories" }}
+					/>
+					<Stack.Screen
+						name="Product"
+						component={Product}
+						options={({ route }) => ({ title: route.params.name })}
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
