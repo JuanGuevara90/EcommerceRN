@@ -5,6 +5,16 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 	},
+	textInput: {
+		marginTop: 10,
+		marginBottom: 10,
+		paddingHorizontal: 8,
+		paddingVertical: 10,
+		marginHorizontal: 5,
+		borderWidth: 0.5,
+		borderRadius: 10,
+		borderColor: "success",
+	},
 	gridbox: {
 		flex: 0.5,
 		height: 280,
@@ -26,5 +36,11 @@ export const styles = StyleSheet.create({
 		textAlign: "left",
 		marginLeft: 30,
 		marginTop: 15,
+	},
+	shadowProp: {
+		shadowColor: "#171717",
+		shadowOffset: { width: -2, height: 4 },
+		shadowOpacity: 0.2,
+		shadowRadius: 3,
 	},
 });

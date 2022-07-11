@@ -1,7 +1,10 @@
 import React from "react";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+	createNativeStackNavigator,
+	NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -12,7 +15,8 @@ import { Tabs } from "./src/components/tab/Tabs";
 import Category from "./src/screens/category";
 import { SafeAreaView } from "react-native";
 import Product from "./src/screens/product";
-
+import Detail from "./src/screens/detail";
+import { RootStackParamList } from "./src/utilis/rootStackParamList";
 // Define the config
 const config = {
 	useSystemColorMode: false,
@@ -26,9 +30,11 @@ declare module "native-base" {
 	interface ICustomTheme extends MyThemeType {}
 }
 
+type Props = NativeStackScreenProps<RootStackParamList>;
+
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export default function App({ route }: Props) {
 	return (
 		<NativeBaseProvider>
 			<NavigationContainer>
@@ -46,6 +52,11 @@ export default function App() {
 					<Stack.Screen
 						name="Product"
 						component={Product}
+						options={({ route }) => ({ title: route.params.name })}
+					/>
+					<Stack.Screen
+						name="Detail"
+						component={Detail}
 						options={({ route }) => ({ title: route.params.name })}
 					/>
 				</Stack.Navigator>
